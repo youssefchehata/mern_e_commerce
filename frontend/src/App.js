@@ -1,10 +1,16 @@
 import React from 'react';
 import './App.css';
-
+import Footer from './components/Footer';
+import Header from './components/Header';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   return (
     <>
-      <h1>Welcome To Proshop</h1>
+      <Header />
+      <main>
+        <h1>Welcome To Proshop</h1>
+      </main>
+      <Footer />
     </>
   );
 };
