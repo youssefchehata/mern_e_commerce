@@ -1,29 +1,39 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Rating from './Rating';
+// import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
   return (
     <>
-      <div className='card my-3 p-3 rounded' style={{ width: '18rem' }}>
-        <img
-          className='card-img-top'
-          src={product.image}
-          alt='Card image cap'
-        />
+      <div className='card m-3 p-3 rounded' style={{ width: '18rem' }}>
+        <a href={`/product/${product._id}`}>
+          <img
+            className='card-img-top'
+            src={product.image}
+            alt='Card image cap'
+          />
+        </a>
         <div className='card-body'>
-          <h5 className='card-title'>{product.name}</h5>
-          <p className='card-text'>{product.rating}</p>
-          <h3>{product.price}</h3>
-          <a href='#' className='btn btn-primary'>
-            Go somewhere
+          <a href={`/product/${product._id}`}>
+            {' '}
+            <h5 className='card-title'>
+              {' '}
+              <strong>{product.name}</strong>{' '}
+            </h5>{' '}
           </a>
+          <div className='card-text my-3'>
+            <Rating  
+            value={product.rating}
+            text={`${product.numReviews} Reviews`}
+            
+            />
+           
+          </div>
+          <h3> TND {product.price}</h3>
         </div>
       </div>
     </>
   );
 };
-{
-  /* <div className='col'>{product.name}</div> */
-}
 
 export default Product;

@@ -7,7 +7,7 @@ const HomeScreen = () => {
       <h1>Latest Products</h1>
       <div className='row'>
         {products.map((product) => (
-        <Product product={product} />
+        <Product product={product} key={product._id} />
         ))}
       </div>
     </>
