@@ -23,7 +23,7 @@ class Routes extends Component {
           <Route exact component={NotFound} />
         <Redirect to='/components/NotFound' />
          
-          
+           {/* {this.state.auth && <Redirect push to='/' />} */}
         </Switch>
       </div>
     );
