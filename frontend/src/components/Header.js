@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 const Header = () => {
   return (
     <header>
-      <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+      <Nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
         <Link className='navbar-brand ' to='/'>
           Youssef_Shop
         </Link>
@@ -27,11 +27,14 @@ const Header = () => {
               <Link className='nav-link ml-auto' to='/Cart'> <i className='fas fa-shopping-cart'></i> Cart </Link>
             </li>
             <li className='nav-item'>
-              <a className='nav-link ml-auto' href='/Profile'> <i className='fas fa-user'></i> Sign In </a>
+              <Link className='nav-link ml-auto' to='/Profile'> <i className='fas fa-user'></i> Sign In </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link ml-auto' to='/HomePresta'> <i className='fas fa-user'></i> Presta </Link>
             </li>
           </ul>
         </div>
-      </nav>
+      </Nav>
     </header>
   );
 };
