@@ -6,9 +6,10 @@ const Header = () => {
   return (
     <header>
       <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-        <a className='navbar-brand ' href='/'>
+        <Link className='navbar-brand ' to='/'>
           Youssef_Shop
-        </a>
+        </Link>
+    
         <button
           className='navbar-toggler'
           type='button'
@@ -23,10 +24,10 @@ const Header = () => {
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav ml-auto'>
             <li className='nav-item'>
-              <a className='nav-link ml-auto' href='/login'> <i className='fas fa-shopping-cart'></i> Cart </a>
+              <Link className='nav-link ml-auto' to='/Cart'> <i className='fas fa-shopping-cart'></i> Cart </Link>
             </li>
             <li className='nav-item'>
-              <a className='nav-link ml-auto' href='/profile'> <i className='fas fa-user'></i> Sign In </a>
+              <a className='nav-link ml-auto' href='/Profile'> <i className='fas fa-user'></i> Sign In </a>
             </li>
           </ul>
         </div>

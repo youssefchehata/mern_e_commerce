@@ -1,33 +1,21 @@
-
 import React, { Component } from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
-import HomeScreen from './screens/HomeScreen';
 
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Cart from './screens/Cart';
+
+import HomeScreen from '../src/screens/HomeScreen';
+import ProductDetails from '../src/screens/ProductDetails';
+import Profile from './screens/Profile';
 
 class Routes extends Component {
-  state = {
-    auth: true
-  };
-//   componentDidMount() {
-//     if (!localStorage.getItem('auth')) {
-//       this.setState({ auth: true });
-//     }
-//   }
   render() {
     return (
       <div>
         <Switch>
-          <Route exact path='/' component={HomeScreen} />
- 
-          {/* <Route exact path='/screens/HomeScreen  ' component= {HomeScreen} /> */}
-   
-          {/* <Route path='/DetailsHotels/:id' component={Product} /> */}
-          {/* ------------------------ */}
-          {/* <Route component={NotFound} />
-          <Redirect to='/Layout/NotFound' /> */}
-
-          {/* ------------------------------- */}
-          {/* {this.state.auth && <Redirect push to='/' />} */}
+          <Route path='/Profile' component={Profile} />
+          <Route path='/Cart' component={Cart} />
+          <Route path='/product/:id' component={ProductDetails} />
+          <Route path='/' component={HomeScreen} />
         </Switch>
       </div>
     );
