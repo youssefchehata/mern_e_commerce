@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <div className="content">
+        <div className="content py-3">
         {this.props.children}
         </div>
       </div>
