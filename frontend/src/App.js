@@ -37,12 +37,6 @@ class App extends Component {
         <Header />
         <div className="content">
         {this.props.children}
-          {/* <Switch>
-          <Route path="/Cart" component={Cart} />
-            <Route path="/product/:id" component={ProductDetails} />
-            <Route path="/" component={HomeScreen} />
-
-          </Switch> */}
         </div>
       </div>
     );
