@@ -7,11 +7,13 @@ const App =({children})=>{
     return (
       <>
         <Header />
+
         <main className='py-3'>
         <div className="content ">
         {children}
         </div>
         </main>
+
         <Footer />
       </>
     );
