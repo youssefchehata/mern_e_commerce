@@ -16,10 +16,11 @@ const ProductDetails = ({match}) => {
     return (
         <>
            
-            {/* <Link className='btn btn-light my-3' to='/'>
-                Go Back
-            </Link> */}
+    
             <div className="container">
+            <Link className='btn btn-light my-3' to='/'>
+                Go Back
+            </Link> 
             <div className="row">
                 <div className="col">
                 <img className='card-img-top'style={{ width: '30rem' }} src={Product.image} alt={Product.name} fluid />
@@ -37,19 +38,17 @@ const ProductDetails = ({match}) => {
                {/* ----------------------------- */}
                <div className="col">
                <div className='card m-3 p-3 ' style={{ width: '18rem' }}>
-          
-               <div className="col">
-               <div className="row">
-               <ul class="list-group list-group-flush">
-                            <li className="list-group-item"> Price : </li>
-                           <li className="list-group-item"> <strong>${Product.price}</strong> </li>
-               </ul>
 
-       </div>
+                           {/* --------- */}
+                           <div className="col">
+               <div className="row list-group-flush">
+               <li className=" list-group-item"> Price : </li>
+                 <li className="list-group-item">${Product.price} </li>
+              </div>
                </div>
                {/* --------- */}
                <div className="col">
-               <div className="row">
+               <div className="row list-group-flush">
          <div className="list-group-item"> Status : </div>
        <div className="list-group-item"> <strong>{Product.countInStock>0?' In stock':' Out of stock'}</strong> </div>
        </div>
@@ -58,7 +57,7 @@ const ProductDetails = ({match}) => {
                 
 
               <div className="list-group-item"> 
-              <button className="btn btn-block btn-dark  ">
+              <button className="btn btn-block btn-dark  " type='button' disabled={Product.countInStock===0}>
               Add To Cart
               </button>
                </div>
