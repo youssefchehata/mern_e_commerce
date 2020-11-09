@@ -1,2 +1,3 @@
 node backend/server
 npm start
+npm run server
