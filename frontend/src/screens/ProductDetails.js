@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
+// import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import axios from 'axios'
 import Rating from '../components/Rating';
 const ProductDetails = ({match}) => {
@@ -12,7 +12,7 @@ const ProductDetails = ({match}) => {
           setProduct(data);
         };
         fetchProducts();
-      }, []);
+      }, [match]);
     return (
         <>
            
