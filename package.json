@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/youssefchehata/mern_e_commerce/issues"
   },
-  "homepage": "https://github.com/youssefchehata/mern_e_commerce#readme"
+  "homepage": "https://github.com/youssefchehata/mern_e_commerce#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
