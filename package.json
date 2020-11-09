@@ -18,5 +18,9 @@
   "homepage": "https://github.com/youssefchehata/mern_e_commerce#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
   }
 }
