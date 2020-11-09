@@ -30,7 +30,7 @@ const ProductDetails = ({match}) => {
                 <ul className="list-group">
                     <li className="list-group-item" > <h3 className='card-title'> <strong>{Product.name}</strong> </h3></li>
                     <li className="list-group-item"><Rating  value={Product.rating} text={`${Product.numReviews} reviews`}  /></li>
-                    <li className="list-group-item">Price : ${Product.price}</li>
+                    <li className="list-group-item">Price : TND {Product.price}</li>
                     <li className="list-group-item">Description : ${Product.description}</li>
                 </ul>
               
@@ -43,7 +43,7 @@ const ProductDetails = ({match}) => {
                            <div className="col">
                <div className="row list-group-flush">
                <li className=" list-group-item"> Price : </li>
-                 <li className="list-group-item">${Product.price} </li>
+                 <li className="list-group-item">TND {Product.price} </li>
               </div>
                </div>
                {/* --------- */}
