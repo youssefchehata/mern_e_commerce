@@ -4,6 +4,7 @@ import axios from 'axios'
 
 const HomeScreen = () => {
   const [Products, setProducts] = useState([]);
+  
 
   useEffect(() => {
     const fetchProducts = async () => {
