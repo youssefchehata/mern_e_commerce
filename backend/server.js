@@ -2,6 +2,7 @@
 import express from 'express'
 // const dotenv = require('dotenv');
 import dotenv from 'dotenv'
+import colors from 'colors'
 import connectDB from './config/db.js'
 // const products = require('./data/products');
 import products from './data/products.js'
