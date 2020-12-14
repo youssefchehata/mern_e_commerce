@@ -1,6 +1,6 @@
 import * as A from '../constants/productConstant';
 
-export const productListReducer = (state = { products: []},action ) => {
+export const productListReducer = (state = { products: [] }, action) => {
   const { type, payload } = action;
   switch (type) {
     case A.PRODUCT_LIST_REQUEST:
