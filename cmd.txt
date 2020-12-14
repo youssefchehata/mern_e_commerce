@@ -11,3 +11,7 @@ create models
 create users.js in data folder install npm i bcryptjs
 
 backend create seeder.js to import data
+
+
+-----------------------
+npm i redux react-redux redux-thunk redux-devtools-extension
