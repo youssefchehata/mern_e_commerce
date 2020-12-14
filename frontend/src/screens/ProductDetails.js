@@ -9,6 +9,7 @@ import Rating from '../components/Rating';
 import { Loader } from '../components/Loader';
 import { Message } from '../components/Message';
 const ProductDetails = ({match}) => {
+  const [qte,setQte]=useState(0)
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
@@ -60,8 +61,30 @@ const ProductDetails = ({match}) => {
        <div className="list-group-item"> <strong>{product.countInStock>0?' In stock':' Out of stock'}</strong> </div>
        </div>
                </div>
-       {/* ----------------- */}
-                
+       {/* ----------qte------- */}
+{
+  product.countInStock>0&&       <div className="col">
+               <div className="row list-group-flush">
+         <div className="list-group-item"> Qte : </div>
+       <div className="list-group-item">
+       < >
+
+  <select className="form-select" selected value={qte} onChange={(e)=>setQte(e.target.value)} >
+{  [...Array(product.countInStock).keys()].map(x=>(
+    <option key={x+1} value={x+1} >
+      {x+1}
+    </option> 
+  ))}
+  </select>
+
+</>
+        </div>
+       </div>
+               </div>
+}
+
+
+                {/* ------------------------ */}
 
               <div className="list-group-item"> 
               <button className="btn btn-block btn-dark  " type='button' disabled={product.countInStock===0}>
