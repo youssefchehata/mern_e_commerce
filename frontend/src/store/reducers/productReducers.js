@@ -13,3 +13,16 @@ export const productListReducer = (state = { products: [] }, action) => {
       return state;
   }
 };
+export const productDetailsReducer = (state = { product:{reviews:[]} }, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case A.PRODUCT_DETAILS_REQUEST:
+      return { loading: true, ...state };
+    case A.PRODUCT_DETAILS_SUCCESS:
+      return { loading: false, product: payload };
+    case A.PRODUCT_DETAILS_FAIL:
+      return { loading: false, error: payload };
+    default:
+      return state;
+  }
+};
