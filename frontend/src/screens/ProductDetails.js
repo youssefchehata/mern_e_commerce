@@ -8,7 +8,7 @@ import { listProductDetails } from '../store/actions/productActions';
 import Rating from '../components/Rating';
 import { Loader } from '../components/Loader';
 import { Message } from '../components/Message';
-const ProductDetails = ({match}) => {
+const ProductDetails = ({match,history}) => {
   const [qte,setQte]=useState(0)
   const dispatch = useDispatch();
 
@@ -19,11 +19,13 @@ const ProductDetails = ({match}) => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch,match]);
 
+ const addToCart=()=>{
+  history.push(`/cart/${match.params.id}?qte=${qte}`)
 
+ }
     return (
         <>
            
-    
             <div className="container">
             <Link className='btn btn-light my-3' to='/'>
                 Go Back
@@ -87,7 +89,9 @@ const ProductDetails = ({match}) => {
                 {/* ------------------------ */}
 
               <div className="list-group-item"> 
-              <button className="btn btn-block btn-dark  " type='button' disabled={product.countInStock===0}>
+              <button className="btn btn-block btn-dark  " type='button' disabled={product.countInStock===0}
+              onClick={addToCart}
+              >
               Add To Cart
               </button>
                </div>

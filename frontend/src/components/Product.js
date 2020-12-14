@@ -1,18 +1,18 @@
 import React from 'react';
 import Rating from './Rating';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
   return (
     <>
       <div className='card m-3 p-3 rounded' style={{ width: '18rem' }}>
-        <a href={`/product/${product._id}`}>
+        <Link to={`/product/${product._id}`}>
           <img
             className='card-img-top'
             src={product.image}
             alt='Card image cap'
           />
-        </a>
+        </Link>
         <div className='card-body'>
           <a href={`/product/${product._id}`}>
             {' '}
