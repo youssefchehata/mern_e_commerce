@@ -12,7 +12,7 @@ import {
 } from 'react-bootstrap';
 import { Loader } from '../components/Loader';
 import { Message } from '../components/Message';
-import { addCart } from '../store/actions/cartActions';
+import { addCart , removeFromCart } from '../store/actions/cartActions';
 
 const Cart = ({ match, location, history }) => {
   const productId = match.params.id;
@@ -27,9 +27,15 @@ const Cart = ({ match, location, history }) => {
     }
   }, [dispatch, productId, qty]);
 
-  const removeFromCart = (id) => {
-      console.log(id)
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id)) 
+    console.log(id);
   };
+
+  const checkOutHandler =()=>{
+      history.push('/login?redirect=shipping')
+   
+  }
   return (
     <Row>
       <Col md={8}>
@@ -69,7 +75,7 @@ const Cart = ({ match, location, history }) => {
                     <Button
                       type='button'
                       variant='light'
-                      onClick={() => removeFromCart(el.product)}
+                      onClick={() => removeFromCartHandler(el.product)}
                     >
                       <i className='fas fa-trash'></i>
                     </Button>
@@ -82,11 +88,27 @@ const Cart = ({ match, location, history }) => {
       </Col>
 
       <Col md={4}>
-          <Card  >
+        <Card>
+          <ListGroup variant='flush'>
+            <ListGroup.Item>
+              <h2>
+                Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
+                items
+              </h2>
+              TND{' '}
+              {cartItems
+                .reduce((acc, item) => acc + item.qty * item.price, 0)
+                .toFixed(2)}
+            </ListGroup.Item>
 
-          </Card>
+            <ListGroup.Item>
+                <Button type='button' className='btn-block' disabled={cartItems.length===0}
+                onClick={checkOutHandler}>checkOut</Button>
+            </ListGroup.Item>
+
+          </ListGroup>
+        </Card>
       </Col>
-      
     </Row>
   );
 };
