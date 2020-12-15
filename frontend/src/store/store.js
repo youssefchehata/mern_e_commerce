@@ -8,7 +8,9 @@ import rootReducer from './reducers/rootReducer';
 
 
 const reducer = rootReducer
+const cartItemsFromStorage = localStorage.getItem('cartItems')?JSON.parse(localStorage.getItem('cartItems')):[]
 const initialState = {
+  cart:{cartItems:cartItemsFromStorage}
   //   authR: { authenticated: localStorage.getItem('token') },
 };
 const middleware = [thunk];

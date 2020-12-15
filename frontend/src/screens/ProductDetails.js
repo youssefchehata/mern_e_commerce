@@ -9,7 +9,7 @@ import Rating from '../components/Rating';
 import { Loader } from '../components/Loader';
 import { Message } from '../components/Message';
 const ProductDetails = ({match,history}) => {
-  const [qte,setQte]=useState(0)
+  const [qte,setQte]=useState(1)
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
