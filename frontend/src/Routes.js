@@ -6,6 +6,8 @@ import Cart from './screens/Cart';
 import HomeScreen from '../src/screens/HomeScreen';
 import ProductDetails from '../src/screens/ProductDetails';
 import Profile from './screens/Profile';
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 import HomePresta from './screens/prestaShop/HomePresta'
 import NotFound from './components/NotFound'
 class Routes extends Component {
@@ -16,6 +18,11 @@ class Routes extends Component {
           
           <Route exact  path='/HomePresta' component={HomePresta} />
           <Route exact path='/HomePresta' component={HomePresta} />
+
+
+          
+          <Route exact path='/register' component={RegisterScreen} />
+          <Route exact path='/login' component={LoginScreen} />
           <Route exact path='/Profile' component={Profile} />
           <Route exact  path='/Cart/:id?' component={Cart} />
           <Route exact path='/product/:id' component={ProductDetails} />

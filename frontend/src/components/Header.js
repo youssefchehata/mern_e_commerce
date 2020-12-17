@@ -1,8 +1,20 @@
 // rafce
 import React from 'react';
-import { Nav } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { Nav, NavDropdown,LinkContainer } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import {logout} from '../store/actions/userActions'
+
+
 const Header = () => {
+  const dispatch = useDispatch()
+
+  const userLogin = useSelector(state=>state.userLogin)
+  const { userInfo}= userLogin
+  const logoutHandler =()=>{
+    dispatch(logout())
+  }
+
   return (
     <header>
       <Nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
@@ -26,9 +38,17 @@ const Header = () => {
             <li className='nav-item'>
               <Link className='nav-link ml-auto' to='/Cart'> <i className='fas fa-shopping-cart'></i> Cart </Link>
             </li>
-            <li className='nav-item'>
-              <Link className='nav-link ml-auto' to='/Profile'> <i className='fas fa-user'></i> Sign In </Link>
-            </li>
+            {userInfo ? (
+              <NavDropdown  title={userInfo.name} id='username'>
+              <li> <Link className=' dropdown-item' to ='/profile'> Profile </Link> </li>
+              <li> <Link className=' dropdown-item' onClick={logoutHandler}> Log Out </Link> </li>
+   
+              
+              </NavDropdown>
+            ):     <li className='nav-item'>
+              <Link className='nav-link ml-auto' to='/login'> <i className='fas fa-user'></i> Sign In </Link>
+            </li>}
+        
             <li className='nav-item'>
               <Link className='nav-link ml-auto' to='/HomePresta'> <i className='fas fa-user'></i> Presta </Link>
             </li>
