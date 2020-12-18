@@ -23,7 +23,7 @@ class Routes extends Component {
           
           <Route exact path='/register' component={RegisterScreen} />
           <Route exact path='/login' component={LoginScreen} />
-          <Route exact path='/Profile' component={Profile} />
+          <Route exact path='/profile' component={Profile} />
           <Route exact  path='/Cart/:id?' component={Cart} />
           <Route exact path='/product/:id' component={ProductDetails} />
           <Route exact path='/' component={HomeScreen} />
