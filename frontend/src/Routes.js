@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Cart from './screens/Cart';
+import ShippingScreen from './screens/ShippingScreen';
+
 
 import HomeScreen from '../src/screens/HomeScreen';
 import ProductDetails from '../src/screens/ProductDetails';
@@ -25,6 +27,7 @@ class Routes extends Component {
           <Route exact path='/login' component={LoginScreen} />
           <Route exact path='/profile' component={Profile} />
           <Route exact  path='/Cart/:id?' component={Cart} />
+          <Route exact  path='/shipping' component={ShippingScreen} />
           <Route exact path='/product/:id' component={ProductDetails} />
           <Route exact path='/' component={HomeScreen} />
           <Route exact component={NotFound} />

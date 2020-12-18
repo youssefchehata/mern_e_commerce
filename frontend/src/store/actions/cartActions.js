@@ -24,3 +24,12 @@ export const removeFromCart = (id) => (dispatch, getState) => {
   });
   localStorage.removeItem( 'cartItems', JSON.stringify(getState().cart.cartItems) );
 };
+
+
+export const saveShippingAddress = (data) => (dispatch) => {
+  dispatch({
+    type: A.CART_SAVE_SHIPPING_ADDRESS,
+    payload: data,
+  });
+  localStorage.setItem( 'shippingAddress', JSON.stringify(data) );
+};
