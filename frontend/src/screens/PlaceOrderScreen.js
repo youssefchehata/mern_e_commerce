@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from '../components/Loader';
 import { Message } from '../components/Message';
 import CheckoutSteps from './CheckoutSteps';
-import { savePaymentMethod } from '../store/actions/cartActions';
+import { createOrder } from '../store/actions/orderActions';
 import { Link } from 'react-router-dom';
 
-const PlaceOrderScreen = () => {
+const PlaceOrderScreen = ({ history }) => {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
   //Calculate prices
@@ -25,7 +26,30 @@ const PlaceOrderScreen = () => {
     Number(cart.shippingPrice) +
     Number(cart.taxPrice)
   ).toFixed(2);
-  const placeOrderHandler = () => {};
+
+  const orderCreate = useSelector((state) => state.orderCreate);
+  const { order, success, error } = orderCreate;
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order._id}`)
+    }
+  }, [history, success]);
+
+  const placeOrderHandler = () => {
+    dispatch(
+      createOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod,
+        itemsPrice: cart.itemsPrice,
+        taxPrice: cart.taxPrice,
+        shippingPrice: cart.shippingPrice,
+        
+        totalPrice: cart.totalPrice,
+      })
+    );
+  };
 
   return (
     <>
@@ -72,7 +96,20 @@ const PlaceOrderScreen = () => {
                         <div className='col-md-4'>
                           {el.qty} x TND {el.price} = TND {el.qty * el.price}
                         </div>
-                        <div className='col-md-4'>
+                    
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <p>
+                <strong>Method:</strong>
+                {cart.paymentMethod}
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div className='col-md-4'>
                           <div className='card'>
                             <ul className='list-group list-group-flush'>
                               <li className='list-group-item'>
@@ -110,6 +147,9 @@ const PlaceOrderScreen = () => {
                                 </div>
                               </li>
                               <li className='list-group-item'>
+                                {error && <Message>{error} </Message>}
+                              </li>
+                              <li className='list-group-item'>
                                 <button
                                   type='button'
                                   className='btn btn-primary '
@@ -122,18 +162,6 @@ const PlaceOrderScreen = () => {
                             </ul>
                           </div>
                         </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <p>
-                <strong>Method:</strong>
-                {cart.paymentMethod}
-              </p>
-            </li>
-          </ul>
-        </div>
       </div>
     </>
   );
