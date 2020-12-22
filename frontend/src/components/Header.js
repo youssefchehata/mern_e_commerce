@@ -48,6 +48,16 @@ const Header = () => {
             ):     <li className='nav-item'>
               <Link className='nav-link ml-auto' to='/login'> <i className='fas fa-user'></i> Sign In </Link>
             </li>}
+            {userInfo&& userInfo.isAdmin && (
+              <NavDropdown  title='Admin'id='adminmenu'>
+
+              <li> <Link className=' dropdown-item' to ='/admin/userlist'> Users </Link> </li>
+              <li> <Link className=' dropdown-item' to ='/admin/productlist'> Products </Link> </li>
+              <li> <Link className=' dropdown-item' to ='/admin/orderlist'> Orders </Link> </li>
+   
+              
+              </NavDropdown>
+            )}
         
             <li className='nav-item'>
               <Link className='nav-link ml-auto' to='/HomePresta'> <i className='fas fa-user'></i> Presta </Link>
