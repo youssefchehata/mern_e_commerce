@@ -146,3 +146,32 @@ export const listUsers = () => async (dispatch, getState) => {
     });
   }
 };
+
+
+export const deleteUser = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: A.USER_DELETE_REQUEST });
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.delete(`/api/users/${id}`, config);
+
+    dispatch({ type: A.USER_DELETE_SUCCESS });
+
+    // localStorage.setItem('userInfo',JSON.stringify(data))
+  } catch (error) {
+    dispatch({
+      type: A.USER_DELETE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};

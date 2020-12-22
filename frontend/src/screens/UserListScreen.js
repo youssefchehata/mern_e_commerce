@@ -4,7 +4,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from '../components/Loader';
 import { Message } from '../components/Message';
-import { listUsers } from '../store/actions/userActions';
+import { deleteUser, listUsers } from '../store/actions/userActions';
 
 const UserListScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -15,15 +15,24 @@ const UserListScreen = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const userDelete = useSelector((state) => state.userDelete);
+  const { success:successDelete } = userDelete;
+
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers());
     } else {
       history.push(`/login`);
     }
-  }, [dispatch,history]);
+  }, [dispatch,history,successDelete]);
 
-  const deleteHandler = (id) => {};
+  const deleteHandler = (id) => {
+      if(window.confirm('Are you sure')){
+         dispatch(deleteUser(id))  
+      }
+  
+
+  };
   return (
     <>
       <h1>Users</h1>
@@ -34,7 +43,7 @@ const UserListScreen = ({ history }) => {
       ) : (
         <table className='table table-striped table-hover table-bordered  table-sm '>
           <div className='table-responsive'>
-            <table class='table align-middle'>
+            <table className='table align-middle'>
               <thead>
                 <tr>
                   <th scope='col'>ID</th>
