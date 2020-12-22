@@ -72,4 +72,17 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     throw new Error('order not exist');
   }
 });
-export { addOrderItems, getOrderById ,updateOrderToPaid};
+
+
+
+// @ Get Get logged in user orders
+// @ GET  api/orders/myorders
+// @ Private
+const getMyOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({user: req.user._id})
+  res.json(orders)
+});
+
+
+
+export { addOrderItems, getOrderById ,updateOrderToPaid,getMyOrders};

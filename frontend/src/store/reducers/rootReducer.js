@@ -5,6 +5,7 @@ import {
   orderCreateReducer,
   orderDetailsReducer,
   orderPayReducer,
+  orderListMyReducer
 } from './orderReducers';
 import {
   userLoginReducer,
@@ -14,14 +15,15 @@ import {
 } from './userReducer';
 
 export default combineReducers({
-  productList      : productListReducer      ,
-  productDetails   : productDetailsReducer   ,
-  cart             : cartReducer             ,
-  userLogin        : userLoginReducer        ,
-  userRegister     : userRegisterReducer     ,
-  userDetails      : userDetailsReducer      ,
-  userUpdateProfile: userUpdateProfileReducer,
-  orderCreate      : orderCreateReducer      ,
-  orderDetails     : orderDetailsReducer     ,
-  orderPay         : orderPayReducer         ,
+  productList       : productListReducer       ,
+  productDetails    : productDetailsReducer    ,
+  cart              : cartReducer              ,
+  userLogin         : userLoginReducer         ,
+  userRegister      : userRegisterReducer      ,
+  userDetails       : userDetailsReducer       ,
+  userUpdateProfile : userUpdateProfileReducer ,
+  orderCreate       : orderCreateReducer       ,
+  orderDetails      : orderDetailsReducer      ,
+  orderPay          : orderPayReducer          ,
+  orderListMy       : orderListMyReducer       ,
 });

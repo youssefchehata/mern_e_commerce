@@ -55,3 +55,22 @@ export const orderPayReducer = (state = {}, action) => {
       return state;
   }
 };
+
+
+export const orderListMyReducer = (state = {orders:[]}, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case A.ORDER_LIST_MY_REQUEST:
+      return { loading: true };
+
+    case A.ORDER_LIST_MY_SUCCESS:
+      return { loading: false, orders: payload };
+
+    case A.ORDER_LIST_MY_FAIL:
+      return { loading: false, error: payload };
+
+
+    default:
+      return state;
+  }
+};
