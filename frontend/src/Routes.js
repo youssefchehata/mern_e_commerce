@@ -20,6 +20,7 @@ import NotFound from './components/NotFound'
 import UserEditScreen from './screens/UserEditScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import OrderListScreen from './screens/OrderListScreen';
+import ProductEditScreen from './screens/ProductEditScreen';
 
 
 class Routes extends Component {
@@ -43,6 +44,7 @@ class Routes extends Component {
          
           <Route exact  path='/admin/orderlist' component={OrderListScreen} />
           <Route exact  path='/admin/productlist' component={ProductListScreen} />
+          <Route exact  path='/admin/product/:id/edit' component={ProductEditScreen} />
           <Route exact  path='/admin/userlist' component={UserListScreen} />
           <Route exact  path='/admin/user/:id/edit' component={UserEditScreen} />
          
