@@ -17,6 +17,7 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import HomePresta from './screens/prestaShop/HomePresta'
 import NotFound from './components/NotFound'
+import UserEditScreen from './screens/UserEditScreen';
 class Routes extends Component {
   render() {
     return (
@@ -35,7 +36,11 @@ class Routes extends Component {
           <Route exact  path='/shipping' component={ShippingScreen} />
           <Route exact  path='/payment' component={PaymentScreen} />
           <Route exact  path='/placeorder' component={PlaceOrderScreen} />
+         
           <Route exact  path='/admin/userlist' component={UserListScreen} />
+          <Route exact  path='/admin/user/:id/edit' component={UserEditScreen} />
+         
+
           <Route exact  path='/order/:id' component={OrderScreen} />
           <Route exact path='/product/:id' component={ProductDetails} />
           <Route exact path='/' component={HomeScreen} />
