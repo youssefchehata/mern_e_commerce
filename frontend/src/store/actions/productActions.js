@@ -88,3 +88,32 @@ export const createProduct = () => async (dispatch, getState) => {
     });
   }
 };
+
+
+export const updateProduct = (product) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: A.PRODUCT_UPDATE_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Content_Type: 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+  const {data}=  await axios.put(`/api/products/${product._id}`,product, config);
+
+    dispatch({ type: A.PRODUCT_UPDATE_SUCCESS ,payload:data});
+  } catch (error) {
+    dispatch({
+      type: A.PRODUCT_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
