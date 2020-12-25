@@ -75,3 +75,22 @@ export const orderListMyReducer = (state = {orders:[]}, action) => {
       return state;
   }
 };
+
+
+export const orderListReducer = (state = {orders:[]}, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case A.ORDER_LIST_REQUEST:
+      return { loading: true };
+
+    case A.ORDER_LIST_SUCCESS:
+      return { loading: false, orders: payload };
+
+    case A.ORDER_LIST_FAIL:
+      return { loading: false, error: payload };
+
+
+    default:
+      return state;
+  }
+};

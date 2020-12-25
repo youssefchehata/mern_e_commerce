@@ -12,6 +12,7 @@ import {
   orderDetailsReducer,
   orderPayReducer,
   orderListMyReducer,
+  orderListReducer
 } from './orderReducers';
 import {
   userLoginReducer,
@@ -24,21 +25,22 @@ import {
 } from './userReducer';
 
 export default combineReducers({
-  productList      : productListReducer      ,
-  productDetails   : productDetailsReducer   ,
-  cart             : cartReducer             ,
-  userLogin        : userLoginReducer        ,
-  userRegister     : userRegisterReducer     ,
-  userDetails      : userDetailsReducer      ,
-  userUpdateProfile: userUpdateProfileReducer,
-  orderCreate      : orderCreateReducer      ,
-  orderDetails     : orderDetailsReducer     ,
-  orderPay         : orderPayReducer         ,
-  orderListMy      : orderListMyReducer      ,
-  userList         : userListReducer         ,
-  userDelete       : userDeleteReducer       ,
-  userUpdate       : userUpdateReducer       ,
-  productDelete    : productDeleteReducer    ,
-  productCreate    : productCreateReducer    ,
-  productUpdate    : productUpdateReducer    ,
+  productList       : productListReducer       ,
+  productDetails    : productDetailsReducer    ,
+  cart              : cartReducer              ,
+  userLogin         : userLoginReducer         ,
+  userRegister      : userRegisterReducer      ,
+  userDetails       : userDetailsReducer       ,
+  userUpdateProfile : userUpdateProfileReducer ,
+  orderCreate       : orderCreateReducer       ,
+  orderDetails      : orderDetailsReducer      ,
+  orderPay          : orderPayReducer          ,
+  orderListMy       : orderListMyReducer       ,
+  userList          : userListReducer          ,
+  userDelete        : userDeleteReducer        ,
+  userUpdate        : userUpdateReducer        ,
+  productDelete     : productDeleteReducer     ,
+  productCreate     : productCreateReducer     ,
+  productUpdate     : productUpdateReducer     ,
+  orderList         : orderListReducer         ,
 });
