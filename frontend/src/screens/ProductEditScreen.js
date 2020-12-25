@@ -188,13 +188,7 @@ const ProductEditScreen = ({ history, match }) => {
           </Form>
         )}
 
-        {/* <Row className='py-3'>
-          <Col> */}
-            {/* <Link to={redirect ? `/login?redirect=${redirect}` : `/login`}>
-            Have an Account ?
-          </Link> */}
-          {/* </Col>
-        </Row> */}
+
       </FormContainer>
     </>
   );
