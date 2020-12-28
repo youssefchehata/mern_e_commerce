@@ -3,7 +3,7 @@ import * as A from '../constants/productConstant';
 
 export const listProducts = (keyword='',pageNumber='') => async (dispatch) => {
   try {
-    dispatch({ type: A.PRODUCT_LIST_REQUEST });
+    dispatch({ type: A.PRODUCT_TOP_REQUEST });
     const { data } = await axios.get(`/api/products?keyword=${keyword}&pageNumber=${pageNumber}`);
     dispatch({ type: A.PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -142,6 +142,25 @@ export const createProductReview = (productId,review) => async (dispatch, getSta
   } catch (error) {
     dispatch({
       type: A.PRODUCT_CREATE_REVIEW_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+
+
+export const listTopProducts = () => async (dispatch) => {
+  try {
+    dispatch({ type: A.PRODUCT_TOP_REQUEST });
+    const { data } = await axios.get(`/api/products/top`);
+  
+    dispatch({ type: A.PRODUCT_TOP_SUCCESS, payload:data });
+  } catch (error) {
+    dispatch({
+      type: A.PRODUCT_TOP_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

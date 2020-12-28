@@ -5,7 +5,8 @@ import {
   productDeleteReducer,
   productCreateReducer,
   productUpdateReducer,
-  productReviewCreateReducer
+  productReviewCreateReducer,
+  productTopRatedReducer
 } from './productReducers';
 import { cartReducer } from './cartReducers';
 import {
@@ -47,4 +48,5 @@ export default combineReducers({
   orderList           : orderListReducer           ,
   orderDeliver        : orderDeliverReducer        ,
   productReviewCreate : productReviewCreateReducer ,
+  productTopRated     : productTopRatedReducer     ,
 });
