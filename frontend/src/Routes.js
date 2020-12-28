@@ -43,7 +43,10 @@ class Routes extends Component {
           <Route exact  path='/placeorder' component={PlaceOrderScreen} />
          
           <Route exact  path='/admin/orderlist' component={OrderListScreen} />
+
           <Route exact  path='/admin/productlist' component={ProductListScreen} />
+          <Route exact  path='/admin/productlist/:pageNumber' component={ProductListScreen} />
+
           <Route exact  path='/admin/product/:id/edit' component={ProductEditScreen} />
           <Route exact  path='/admin/userlist' component={UserListScreen} />
           <Route exact  path='/admin/user/:id/edit' component={UserEditScreen} />
@@ -51,7 +54,9 @@ class Routes extends Component {
 
           <Route exact  path='/order/:id' component={OrderScreen} />
           <Route exact path='/product/:id' component={ProductDetails} />
-          <Route exact path='/search/:keyword' component={HomeScreen} />
+          <Route exact path='/search/:keyword'                  component={HomeScreen} />
+          <Route exact path='/page/:pageNumber'                 component={HomeScreen} />
+          <Route exact path='/search/:keyword/page/:pageNumber' component={HomeScreen} />
           <Route exact path='/' component={HomeScreen} />
           <Route exact component={NotFound} />
         <Redirect to='/components/NotFound' />
