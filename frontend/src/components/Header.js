@@ -1,9 +1,11 @@
 // rafce
 import React from 'react';
+import {Route} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { Nav, NavDropdown,LinkContainer } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import {logout} from '../store/actions/userActions'
+import SearchBox from './SearchBox';
 
 
 const Header = () => {
@@ -34,7 +36,13 @@ const Header = () => {
           <span className='navbar-toggler-icon' />
         </button>
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+         <Route render={({history})=> <SearchBox history={history} />}></Route>
+          
+            
           <ul className='navbar-nav ml-auto'>
+
+      
+
             <li className='nav-item'>
               <Link className='nav-link ml-auto' to='/Cart'> <i className='fas fa-shopping-cart'></i> Cart </Link>
             </li>
