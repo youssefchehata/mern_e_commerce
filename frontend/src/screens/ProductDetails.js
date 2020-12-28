@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
-import { listProductDetails } from '../store/actions/productActions';
+import { listProductDetails ,createProductReview} from '../store/actions/productActions';
+import {PRODUCT_CREATE_REVIEW_RESET} from '../store/constants/productConstant'
 // import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 
 import Rating from '../components/Rating';
@@ -10,19 +11,39 @@ import { Loader } from '../components/Loader';
 import { Message } from '../components/Message';
 const ProductDetails = ({match,history}) => {
   const [qte,setQte]=useState(1)
+  const [rating,setRating]=useState(0)
+  const [comment,setComment]=useState('')
+ 
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const productReviewCreate = useSelector((state) => state.productReviewCreate);
+  const { success:successProductReview, error:errorProductReview } = productReviewCreate;
+
   useEffect(() => {
+    if(successProductReview){
+      alert('Review submitted!')
+      setRating(0)
+      setComment('')
+      dispatch({type:PRODUCT_CREATE_REVIEW_RESET})
+    }
     dispatch(listProductDetails(match.params.id));
-  }, [dispatch,match]);
+  }, [dispatch,match,successProductReview]);
 
  const addToCart=()=>{
   history.push(`/cart/${match.params.id}?qte=${qte}`)
 
  }
+ const submitHandler =(e)=>{
+   e.preventDefault()
+   dispatch(createProductReview(match.params.id,{rating,comment}))
+ }
+
     return (
         <>
            
@@ -31,6 +52,7 @@ const ProductDetails = ({match,history}) => {
                 Go Back
             </Link> 
             {loading?<Loader/>:error?<Message>errorBackend!!{error}</Message>:
+            <>
               <div className="row">
                 <div className="col">
                 <img className='card-img-top'style={{ width: '30rem' }} src={product.image} alt={product.name} fluid />
@@ -99,6 +121,61 @@ const ProductDetails = ({match,history}) => {
 
                </div>
             </div>
+
+<div className="row">
+  <div className="col-md-6">
+    <h2>Reviews</h2>
+    {product.reviews.length === 0 && <Message>No Reviews</Message>}
+    <ul className='list-group list-group-flush'>
+      {product.reviews.map(el=>(
+        <li className='list-group-item'key={el._id}>
+               <strong>{el.name}</strong>
+               <Rating value={el.rating} />
+               <p>{el.createdAt.substring(0,10) }</p>
+               <p>{el.comment }</p>
+              </li>
+      ))}
+      <li className='list-group-item'>
+        <h2>Write a Customer Review</h2>
+        {errorProductReview&& <Message>{errorProductReview}</Message>}
+        {userInfo ?<form onSubmit={submitHandler}>
+           
+        <div class="mb-3">
+         <select className="form-select" aria-label="Rating"
+    onChange={(e)=>setRating(e.target.value)} value={rating} 
+    >
+  <option selected value='' >Select...</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+  <option value="4">Four</option>
+</select>
+   </div>
+
+ <div class="mb-3">
+<div className="form-floating">
+  <textarea class="form-control" placeholder="Leave a comment here" id="comment"
+   onChange={(e)=>setComment(e.target.value)} value={comment} 
+  ></textarea>
+  <label for="comment">Comments</label>
+</div>
+<button type="submit" class="btn btn-dark">Primary</button>
+</div>
+
+ 
+         </form>
+          
+
+  
+        :<Message>
+          Please <Link to={'/login'} > Sign In</Link>
+        </Message> }
+      </li>
+    </ul>
+             
+  </div>
+</div>
+</>
             }
      
             </div>
