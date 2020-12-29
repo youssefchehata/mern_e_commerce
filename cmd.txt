@@ -17,3 +17,11 @@ create auth without token
 create token npm i jsonwebtoken
 -----------------------
 npm i redux react-redux redux-thunk redux-devtools-extension
+
+
+
+------------------
+https://brew.sh/
+sudo snap install --classic heroku
+heroku login
+heroku create youssefshop
